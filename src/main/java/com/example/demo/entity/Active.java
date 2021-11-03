@@ -12,4 +12,8 @@ public class Active {
     private String uid;
     private LocalDateTime activeTime;
     private String activeDate;
+
+    public String toString() {
+        return this.id + "," + this.uid + "," + this.activeTime + "," + this.activeDate;
+    }
 }

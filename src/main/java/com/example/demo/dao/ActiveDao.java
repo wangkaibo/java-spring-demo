@@ -21,4 +21,10 @@ public class ActiveDao {
                 .last("limit 100");
         return activeMapper.selectList(queryWrapper);
     }
+
+    public List<Active> getAllActiveList() {
+        LambdaQueryWrapper<Active> queryWrapper = Wrappers.lambdaQuery(Active.class)
+                .orderByDesc(Active::getId);
+        return activeMapper.selectList(queryWrapper);
+    }
 }

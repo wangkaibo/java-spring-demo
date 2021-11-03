@@ -29,7 +29,7 @@ public class MybatisPlusConfig {
         dataSourceBuilder.driverClassName(Driver.class.getName());
         dataSourceBuilder.url("jdbc:mysql://118.24.62.63:3306/strawberry?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&serverTimezone=Asia/Shanghai&useSSL=false");
         dataSourceBuilder.username("root");
-        dataSourceBuilder.password("*****");
+        dataSourceBuilder.password("");
         return dataSourceBuilder.build();
     }
 
@@ -41,7 +41,7 @@ public class MybatisPlusConfig {
         factoryBean.setDataSource(dataSource);
         factoryBean.setPlugins(interceptors);
         MybatisConfiguration mybatisConfiguration = new MybatisConfiguration();
-        mybatisConfiguration.setLogImpl(org.apache.ibatis.logging.stdout.StdOutImpl.class);
+        // mybatisConfiguration.setLogImpl(org.apache.ibatis.logging.stdout.StdOutImpl.class);
         factoryBean.setConfiguration(mybatisConfiguration);
         return factoryBean;
     }
