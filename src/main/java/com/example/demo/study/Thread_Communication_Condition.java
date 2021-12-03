@@ -16,7 +16,7 @@ public class Thread_Communication_Condition {
   
         final List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
         final List<String> strings = Arrays.asList("A", "B", "C", "D", "E", "F", "G");
-  
+        long start = System.currentTimeMillis();
         Lock lock = new ReentrantLock();
         Condition condition1 = lock.newCondition();
         Condition condition2 = lock.newCondition();
@@ -57,7 +57,8 @@ public class Thread_Communication_Condition {
                 lock.unlock();
             }
         }, "t2").start();
-  
+
+        System.out.println(System.currentTimeMillis() - start);
     }
   
 }
