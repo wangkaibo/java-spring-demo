@@ -19,8 +19,6 @@ public class AddTwoNumbers {
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        //输入：l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
-        //输出：[8,9,9,9,0,0,0,1]
         int carry = 0;
         if (l1 == null && l2 == null) {
             return null;
@@ -38,32 +36,21 @@ public class AddTwoNumbers {
                 num2 = l2.val;
                 l2 = l2.next;
             }
-            int val = (num1 + num2 + carry) % 10;
-            if (num1 + num2 + carry >= 10) {
-                carry = (num1 + num2 + carry) / 10;
-            } else {
-                carry = 0;
-            }
-
+            int sum = num1 + num2 + carry;
+            int val = sum % 10;
+            carry = sum / 10;
             if (head == null) {
                 // 初始节点
-                head = new ListNode();
-                head.val = val;
-                head.next = null;
-                current = head;
+                current = head = new ListNode(val);
             } else {
-                ListNode next = new ListNode();
-                next.val = val;
                 // 下一节点
-                current.next = next;
+                current.next = new ListNode(val);
                 // 前进
                 current = current.next;
             }
         }
         if (carry > 0) {
-            ListNode newNode = new ListNode();
-            newNode.val = carry;
-            current.next = newNode;
+            current.next = new ListNode(carry);
         }
         return head;
     }
