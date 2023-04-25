@@ -22,28 +22,30 @@ public class FileService {
     private ActiveDao activeDao;
 
     public void dataExport() {
-        try {
-            String path = "export.csv";
-            File file = ResourceUtils.getFile(path);
-            if (file.exists()) {
-                file.delete();
-            } else {
-                file.createNewFile();
-            }
-            List<Active> activeList = activeDao.getAllActiveList();
-            log.info("activeList count:" + activeList.size());
-            try (Writer writer = new FileWriter(path, true)) {
-                BufferedWriter bufferedWriter = new BufferedWriter(writer);
-                for (Active active: activeList) {
-                    bufferedWriter.write(active.toString());
-                    bufferedWriter.newLine();
+        (new Thread(() -> {
+            try {
+                String path = "export.csv";
+                File file = ResourceUtils.getFile(path);
+                if (file.exists()) {
+                    file.delete();
+                } else {
+                    file.createNewFile();
                 }
-                bufferedWriter.flush();
-                bufferedWriter.close();
+                List<Active> activeList = activeDao.getAllActiveList();
+                log.info("activeList count:" + activeList.size());
+                try (Writer writer = new FileWriter(path, true)) {
+                    BufferedWriter bufferedWriter = new BufferedWriter(writer);
+                    for (Active active: activeList) {
+                        bufferedWriter.write(active.toString());
+                        bufferedWriter.newLine();
+                    }
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
+                }
+                System.out.println(file);
+            } catch (Exception e) {
+                log.error("Exception", e);
             }
-            System.out.println(file);
-        } catch (Exception e) {
-            log.error("Exception", e);
-        }
+        })).start();
     }
 }

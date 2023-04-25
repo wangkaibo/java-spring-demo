@@ -1,6 +1,7 @@
 package com.example.demo.study.leetcode;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -54,7 +55,6 @@ public class LevelOrder {
     }
 
     public static void main(String[] args) throws JsonProcessingException {
-        String money = String.valueOf((double)50 / 100);
-        System.out.println(money);
+        Gson gson = new Gson();
     }
 }

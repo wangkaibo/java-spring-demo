@@ -27,7 +27,7 @@ public class MybatisPlusConfig {
     public DataSource activeDb() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName(Driver.class.getName());
-        dataSourceBuilder.url("jdbc:mysql://118.24.62.63:3306/strawberry?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&serverTimezone=Asia/Shanghai&useSSL=false");
+        dataSourceBuilder.url("jdbc:mysql://127.0.0.1:3306/strawberry?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&serverTimezone=Asia/Shanghai&useSSL=false");
         dataSourceBuilder.username("root");
         dataSourceBuilder.password("");
         return dataSourceBuilder.build();
